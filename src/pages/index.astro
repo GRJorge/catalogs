@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Catalog from "../components/catalog.astro";
+import { getCollection } from "astro:content";
+
+const allCatalogs = await getCollection("catalogs");
+---
+
+<Layout title="Catalogos de autopartes">
+  <section>
+    {
+      allCatalogs.map((catalog) => {
+        return <Catalog catalog={catalog} />;
+      })
+    }
+  </section>
+</Layout>
