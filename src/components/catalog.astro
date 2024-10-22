@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  catalog: CollectionEntry<"catalogs">;
+}
+
+const { catalog } = Astro.props;
+---
+
+<article class="flex bg-light-200 rounded-2xl my-2 p-4 gap-4">
+  <aside class="flex items-center">
+    <a href={catalog.data.link}
+      ><img
+        class="w-36 min-w-36"
+        src={`/public/logos/${catalog.slug}.webp`}
+        alt={catalog.data.name}
+      />
+    </a>
+  </aside>
+  <main class="flex flex-wrap flex-grow gap-2 items-center">
+    {
+      catalog.data.autoparts.map((autopart) => {
+        return (
+          <span class="bg-light-100 text-sm px-3 py-1 h-max rounded-full">
+            {autopart}
+          </span>
+        );
+      })
+    }
+  </main>
+  <a
+    class="bg-purple rounded-lg px-2 flex items-center"
+    href={catalog.data.link}>{">"}</a
+  >
+</article>
