@@ -7,7 +7,7 @@ const allCatalogs = await getCollection("catalogs");
 ---
 
 <Layout title="Catalogos de autopartes">
-  <section class="flex flex-col gap-2 my-4" id="catalogs">
+  <section class="flex flex-col gap-2 mt-4 mb-10" id="catalogs">
     {
       allCatalogs.map((catalog) => {
         return <Catalog catalog={catalog} client:visible />;
