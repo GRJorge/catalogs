@@ -2,9 +2,9 @@
   <h1 class="font-bold text-2xl">Catalogos</h1>
   <search class="flex gap-2 w-full">
     <input
-      class="px-4 py-2 border-1 flex-grow border-dark bg-transparent rounded-full focus:outline-dark focus:outline-1 focus:outline"
+      class="px-4 py-2 border-1 flex-grow border-dark bg-transparent rounded-full focus:outline-dark focus:outline-1 focus:outline placeholder:text-dark"
       type="text"
-      placeholder="¿Que buscas? (Bujias, empaques, rotulas)"
+      placeholder="¿Que buscas? (Pistones, empaques, bobinas)"
       id="searchInput"
     />
   </search>
@@ -21,14 +21,17 @@
         .querySelectorAll("span")
         .forEach((autopart) => {
           if (
-            autopart.innerHTML
-              .toString()
+            omitAccents(autopart.innerHTML.toString())
               .toLowerCase()
-              .includes(searchInput!.value.toLowerCase())
+              .includes(omitAccents(searchInput!.value).toLowerCase())
           ) {
             catalog.style.display = "flex";
           }
         });
     });
   });
+
+  function omitAccents(str: string) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
 </script>
