@@ -7,17 +7,13 @@
       placeholder="¿Que buscas? (Bujias, empaques, rotulas)"
       id="searchInput"
     />
-    <button
-      class="bg-green px-4 rounded-full hover:outline hover:outline-1 hover:outline-dark active:saturate-150 focus:outline focus:outline-2 focus:outline-dark"
-      >Buscar</button
-    >
   </search>
 </header>
 <script>
   const catalogsSection = document.querySelector("#catalogs");
   const searchInput: HTMLInputElement = document.querySelector("#searchInput")!;
 
-  searchInput!.addEventListener("input", (event: Event) => {
+  searchInput!.addEventListener("input", () => {
     catalogsSection!.querySelectorAll("article").forEach((catalog) => {
       catalog.style.display = "none";
       catalog
