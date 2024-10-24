@@ -10,7 +10,15 @@ const allCatalogs = await getCollection("catalogs");
   <section class="flex flex-col gap-2 mt-4 mb-10" id="catalogs">
     {
       allCatalogs.map((catalog) => {
-        return <Catalog catalog={catalog} client:visible />;
+        return (
+          <Catalog
+            link={catalog.data.link}
+            name={catalog.data.name}
+            slug={catalog.slug}
+            autoparts={catalog.data.autoparts}
+            client:visible
+          />
+        );
       })
     }
   </section>
